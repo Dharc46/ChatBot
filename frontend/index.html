@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatBot</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <video autoplay muted loop id="background-video">
+      <source src="your-video.mp4" type="video/mp4" />
+    </video>
+    <div id="app">
+      <!-- Giao diện đăng nhập -->
+      <div id="login-container" class="auth-container">
+        <div class="auth-box" id="login-box">
+          <h2>ChatBot</h2>
+          <input type="text" id="username" placeholder="Tài Khoản" />
+          <input type="password" id="password" placeholder="Mật Khẩu" />
+          <button onclick="login()">Đăng Nhập</button>
+          <p class="switch-auth" onclick="showRegister()">Đăng Ký</p>
+        </div>
+      </div>
+
+      <!-- Giao diện đăng ký -->
+      <div class="auth-container" id="register-container" style="display: none">
+        <div class="auth-box" id="register-box">
+          <h2>Đăng Ký</h2>
+          <input
+            type="text"
+            id="register-username"
+            placeholder="Tên Tài Khoản"
+          />
+          <input
+            type="password"
+            id="register-password"
+            placeholder="Mật Khẩu"
+          />
+          <input
+            type="password"
+            id="confirm-password"
+            placeholder="Nhập Lại Mật Khẩu"
+          />
+          <button onclick="register()">Xác Nhận</button>
+          <p class="switch-auth" onclick="showLogin()">
+            Đã có tài khoản? Đăng Nhập
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

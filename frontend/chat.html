@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatBot Interface</title>
+    <link rel="stylesheet" href="chat.css" />
+    <!-- Thêm link Font Awesome để sử dụng icon -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Phần loading -->
+    <div id="loading-container">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Nội dung chính của chat, ban đầu sẽ ẩn -->
+    <div id="chat-container" class="chat-container" style="display: none">
+      <div id="hand-wave" class="hand-wave">
+        <i class="fas fa-hand-paper"></i>
+      </div>
+      <div class="history">
+        <button onclick="newChat()">Thêm Chat Mới</button>
+        <ul id="chat-history-list"></ul>
+      </div>
+      <div class="chat-box">
+        <div class="chat-content" id="chat-content"></div>
+        <div class="chat-input-container">
+          <input type="text" id="chat-input" placeholder="Nhập tin nhắn..." />
+          <!-- Nút gửi tin nhắn với icon send -->
+          <button class="send-button" onclick="sendMessage()">
+            <i class="fas fa-paper-plane"></i>
+            <!-- Icon send -->
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nút đăng xuất ra ngoài chat container -->
+    <button class="logout" onclick="logout()">
+      <i class="fas fa-sign-out-alt"></i>
+      <!-- Icon đăng xuất -->
+    </button>
+
+    <script src="chat.js"></script>
+    <script>
+      // Khi trang hoàn tất tải, hiển thị loading trong 1s rồi mới chuyển sang giao diện chat
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          document.getElementById("loading-container").style.display = "none"; // Ẩn loading
+          document.getElementById("chat-container").style.display = "flex"; // Hiển thị chat
+        }, 1000); // Đợi 1 giây (1000ms) trước khi ẩn loading và hiển thị chat
+      });
+    </script>
+  </body>
+</html>

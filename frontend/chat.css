@@ -1,0 +1,258 @@
+/* Phần hoạt cảnh loading */
+#loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Đảm bảo loading ở trên cùng */
+}
+
+/* Vòng xoay loading */
+.spinner {
+  border: 8px solid #f3f3f3; /* Màu nền của vòng xoay */
+  border-top: 8px solid #4caf50; /* Màu của vòng xoay */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; /* Tạo hiệu ứng xoay */
+}
+
+/* Hiệu ứng xoay */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Đặt font cho toàn bộ trang chatbot */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212; /* Màu nền tối cho trang chatbot */
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Bao bọc toàn bộ container chat */
+.chat-container {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  max-width: 1200px;
+  height: 80%; /* Đảm bảo chiều cao của container */
+}
+
+/* Phần lịch sử chat */
+.history {
+  width: 35%; /* Tăng chiều rộng của lịch sử chat */
+  padding: 20px;
+  background-color: #333;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  overflow-y: auto;
+  height: 100%; /* Đảm bảo chiều cao đầy đủ của phần lịch sử */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nút lịch sử chat */
+.history button {
+  padding: 10px;
+  background-color: #5159c1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px; /* Tạo khoảng cách với danh sách chat */
+}
+
+.history button:hover {
+  background-color: #45a049;
+}
+
+/* Danh sách các cuộc trò chuyện */
+#chat-history-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+  flex-grow: 1; /* Đảm bảo phần lịch sử chiếm hết không gian còn lại */
+}
+
+#chat-history-list li {
+  margin-bottom: 10px;
+  background-color: #444;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#chat-history-list li:hover {
+  background-color: #555;
+}
+
+/* Phần chat box */
+.chat-box {
+  width: 65%; /* Tăng chiều rộng của chat box */
+  padding: 20px;
+  background-color: #333;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  height: 100%; /* Đảm bảo chiều cao đầy đủ cho chat box */
+}
+
+/* Nội dung chat */
+.chat-content {
+  max-height: 500px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 10px; /* Khoảng cách phải của nội dung chat */
+}
+
+/* Các tin nhắn trong chat */
+.chat-content .user-message,
+.chat-content .bot-message {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  max-width: 75%; /* Giới hạn chiều rộng của tin nhắn */
+}
+
+.chat-content .user-message {
+  background-color: #4caf50;
+  color: white;
+  align-self: flex-end;
+}
+
+.chat-content .bot-message {
+  background-color: #444;
+  color: white;
+  align-self: flex-start;
+}
+
+/* Input tin nhắn */
+.chat-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%; /* Đảm bảo container chiếm toàn bộ chiều rộng */
+}
+
+#chat-input {
+  width: 90%; /* Chiều rộng của trường nhập tin nhắn */
+  padding: 12px 15px; /* Căn chỉnh padding trái và phải */
+  margin-top: 10px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #222;
+  color: white;
+  font-size: 16px;
+  box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước của phần tử */
+}
+
+/* Nút gửi tin nhắn */
+.send-button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 24px; /* Kích thước icon */
+  cursor: pointer;
+  margin-left: 10px; /* Khoảng cách giữa input và nút gửi */
+  transform: translateY(6px); /* Dịch xuống 2px */
+}
+
+.send-button i {
+  font-size: 28px; /* Kích thước icon lớn */
+}
+
+.send-button:hover {
+  color: #4caf50;
+}
+
+/* Nút đăng xuất ra ngoài */
+button.logout {
+  position: fixed; /* Đặt cố định ngoài màn hình */
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 24px; /* Kích thước icon */
+  cursor: pointer;
+  z-index: 10000;
+}
+
+button.logout i {
+  font-size: 32px; /* Kích thước icon lớn */
+}
+
+button.logout:hover {
+  color: #ff6347;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.chat-content .user-message,
+.chat-content .bot-message {
+  animation: slide-up 0.3s ease-out;
+}
+
+/* Biểu tượng bàn tay chào */
+.hand-wave {
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Căn giữa cả theo chiều ngang và chiều dọc */
+  font-size: 50px;
+  color: #4caf50;
+  animation: wave-animation 2s infinite;
+  z-index: 10000;
+}
+
+/* Hoạt cảnh bàn tay chào */
+@keyframes wave-animation {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(15deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(-15deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
