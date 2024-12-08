@@ -232,7 +232,7 @@ button.logout:hover {
     -50%,
     -50%
   ); /* Căn giữa cả theo chiều ngang và chiều dọc */
-  font-size: 50px;
+  font-size: 120px;
   color: #4caf50;
   animation: wave-animation 2s infinite;
   z-index: 10000;
